@@ -1,0 +1,41 @@
+https://www.hackerrank.com/challenges/time-conversion/problem
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+/*
+ * Complete the timeConversion function below.
+ */
+string timeConversion(string s) {
+    string t;
+    t[0] = s[0];
+    t[1] = s[1];
+    t[2] = '\0';
+    int x = stoi(t);
+    t = "00";
+    if(x == 12 && s[8]=='A')
+    s = t.append(s.substr(2));
+    else if(s[8]=='P')
+    {if(x!=12)
+    s = to_string(x+12).append(s.substr(2));}
+    s.pop_back();
+    s.pop_back();
+    return s;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string s;
+    getline(cin, s);
+
+    string result = timeConversion(s);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
