@@ -1,0 +1,46 @@
+https://www.hackerrank.com/challenges/ctci-making-anagrams/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=strings
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the makeAnagram function below.
+int makeAnagram(string a, string b) {
+    int one[26] = {0},two[26] = {0},i=0,n,count=0;
+    while(a[i])
+    {
+        one[int(a[i])-97]++;
+        i++;
+    }
+    i=0;
+    while(b[i])
+    {
+        two[int(b[i])-97]++;
+        i++;
+    }
+    for(i=0;i<26;i++)
+    {
+        if(one[i]!=two[i])
+        count = count + abs(one[i]-two[i]);
+    }
+    return count;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string a;
+    getline(cin, a);
+
+    string b;
+    getline(cin, b);
+
+    int res = makeAnagram(a, b);
+
+    fout << res << "\n";
+
+    fout.close();
+
+    return 0;
+}
